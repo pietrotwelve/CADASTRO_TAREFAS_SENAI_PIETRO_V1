@@ -5,7 +5,6 @@ const contadorTarefas = document.getElementById('contador-tarefas');
 const botaoAlternarTema = document.getElementById('botao-alternar-tema');
 const botoesFiltro = document.querySelectorAll('.filtro');
 
-<<<<<<< HEAD
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 
 const modoEscuroSalvo = localStorage.getItem('modoEscuro') === 'true';
@@ -25,11 +24,6 @@ function salvarTarefas() {
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
 }
 
-=======
-let tarefas = [];
-let filtroAtual = 'todas';
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
 function atualizarContador() {
     const pendentes = tarefas.filter(tarefa => !tarefa.concluida).length;
     const concluidas = tarefas.filter(tarefa => tarefa.concluida).length;
@@ -73,10 +67,6 @@ function renderizarTarefas() {
     }
 
     visiveis.forEach(tarefa => {
-<<<<<<< HEAD
-=======
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
         const itemLista = document.createElement('li');
 
         itemLista.className =
@@ -105,10 +95,6 @@ function renderizarTarefas() {
             '<i class="fa-solid fa-pen"></i>';
 
         botaoEditar.addEventListener('click', () => {
-<<<<<<< HEAD
-=======
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
             const novoTexto = prompt(
                 'Edite sua tarefa:',
                 tarefa.texto
@@ -127,11 +113,8 @@ function renderizarTarefas() {
 
             tarefa.texto = textoLimpo.slice(0, 40);
 
-<<<<<<< HEAD
             salvarTarefas();
 
-=======
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
             renderizarTarefas();
         });
 
@@ -155,14 +138,9 @@ function renderizarTarefas() {
                 : '<i class="fa-regular fa-circle-check"></i>';
 
         botaoConcluir.addEventListener('click', () => {
-<<<<<<< HEAD
             tarefa.concluida = !tarefa.concluida;
 
             salvarTarefas();
-=======
-
-            tarefa.concluida = !tarefa.concluida;
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
 
             renderizarTarefas();
         });
@@ -182,19 +160,12 @@ function renderizarTarefas() {
             '<i class="fa-solid fa-trash"></i>';
 
         botaoExcluir.addEventListener('click', () => {
-<<<<<<< HEAD
-=======
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
             tarefas = tarefas.filter(
                 item => item !== tarefa
             );
 
-<<<<<<< HEAD
             salvarTarefas();
 
-=======
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
             renderizarTarefas();
         });
 
@@ -216,17 +187,9 @@ function renderizarTarefas() {
 }
 
 function adicionarTarefa() {
-<<<<<<< HEAD
     const textoTarefa = campoTarefa.value.trim();
 
     if (!textoTarefa) {
-=======
-
-    const textoTarefa = campoTarefa.value.trim();
-
-    if (!textoTarefa) {
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
         alert('Por favor, digite uma tarefa!');
 
         campoTarefa.focus();
@@ -239,28 +202,17 @@ function adicionarTarefa() {
         concluida: false
     });
 
-<<<<<<< HEAD
     salvarTarefas();
 
-=======
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
     campoTarefa.value = '';
 
     filtroAtual = 'todas';
 
     botoesFiltro.forEach(botao => {
-<<<<<<< HEAD
-=======
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
         botao.classList.toggle(
             'ativo',
             botao.dataset.filtro === filtroAtual
         );
-<<<<<<< HEAD
-=======
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
     });
 
     renderizarTarefas();
@@ -269,44 +221,24 @@ function adicionarTarefa() {
 }
 
 botoesFiltro.forEach(botao => {
-<<<<<<< HEAD
     botao.addEventListener('click', () => {
         filtroAtual = botao.dataset.filtro;
 
         botoesFiltro.forEach(item => {
-=======
-
-    botao.addEventListener('click', () => {
-
-        filtroAtual = botao.dataset.filtro;
-
-        botoesFiltro.forEach(item => {
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
             item.classList.toggle(
                 'ativo',
                 item === botao
             );
-<<<<<<< HEAD
-=======
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
         });
 
         renderizarTarefas();
     });
-<<<<<<< HEAD
 });
 
-=======
-
-});
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
 botaoAdicionar.addEventListener(
     'click',
     adicionarTarefa
 );
-<<<<<<< HEAD
 
 campoTarefa.addEventListener(
     'keypress',
@@ -320,27 +252,10 @@ campoTarefa.addEventListener(
 botaoAlternarTema.addEventListener(
     'click',
     () => {
-=======
-campoTarefa.addEventListener(
-    'keypress',
-    evento => {
-
-        if (evento.key === 'Enter') {
-            adicionarTarefa();
-        }
-
-    }
-);
-botaoAlternarTema.addEventListener(
-    'click',
-    () => {
-
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
         document.body.classList.toggle(
             'modo-escuro'
         );
 
-<<<<<<< HEAD
         const modoEscuro =
             document.body.classList.contains('modo-escuro');
 
@@ -349,8 +264,6 @@ botaoAlternarTema.addEventListener(
             modoEscuro
         );
 
-=======
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
         const iconeTema =
             botaoAlternarTema.querySelector('i');
 
@@ -361,14 +274,7 @@ botaoAlternarTema.addEventListener(
         iconeTema.classList.toggle(
             'fa-sun'
         );
-<<<<<<< HEAD
     }
 );
 
 renderizarTarefas();
-=======
-
-    }
-);
-renderizarTarefas();
->>>>>>> bbb6147143bda04ea15a786a5b2c986a3c2d556f
