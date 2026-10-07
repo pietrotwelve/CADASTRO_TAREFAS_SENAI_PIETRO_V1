@@ -1,0 +1,328 @@
+:root {
+    --gradiente-fundo: linear-gradient(135deg, #ffffff 0%, #000000 100%);
+    --fundo-cartao: #ffffff;
+    --cor-texto: #1a1a1a;
+    --cor-primaria: #1a1a1a;
+    --cor-primaria-destaque: #444444;
+    --cor-borda: #edf2f7;
+    --cor-perigo: #ff7675;
+    --cor-concluido: #a0aec0;
+}
+
+body.modo-escuro {
+    --gradiente-fundo: linear-gradient(135deg, #4a4a4a 0%, #000000 100%);
+    --fundo-cartao: #121212;
+    --cor-texto: #f7fafc;
+    --cor-borda: #2e2e2e;
+    --cor-primaria: #c0392b;
+    --cor-primaria-destaque: #e74c3c;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("itachi.jpg") center / cover no-repeat;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.6s ease;
+}
+
+body.modo-escuro::before {
+    opacity: 0.18;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+body {
+    background: var(--gradiente-fundo);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cartao-aplicacao {
+    position: relative;
+    z-index: 1;
+    background: var(--fundo-cartao);
+    color: var(--cor-texto);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.cabecalho-aplicacao {
+    display: block;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.cabecalho-aplicacao h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.banner {
+    height: 150px;
+    background: url("banner.jpg") center 75% / cover no-repeat;
+    position: relative;
+}
+
+.botao-icone {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    cursor: pointer;
+}
+
+.banner .botao-icone {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.banner .botao-icone:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.perfil {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0 24px;
+    margin-top: -42px;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.foto-perfil {
+    display: block;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--fundo-cartao);
+    background: var(--fundo-cartao);
+}
+
+.status-online {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #23a55a;
+    border: 4px solid var(--fundo-cartao);
+}
+
+.identidade {
+    margin-top: 52px;
+    padding-bottom: 0;
+    min-width: 0;
+}
+
+.identidade h1 {
+    font-size: 1.35rem;
+    line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.subtitulo {
+    font-size: 0.85rem;
+    color: var(--cor-concluido);
+}
+
+.corpo-aplicacao {
+    margin: 20px 24px 24px;
+    padding: 16px;
+    background: rgba(128, 128, 128, 0.08);
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+}
+
+.caixa-entrada {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 15px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+    outline: none;
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--cor-texto);
+}
+
+input[type="text"]:focus {
+    border-color: var(--cor-primaria);
+}
+
+.botao-principal {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.1s, background 0.2s;
+}
+
+.botao-principal:hover {
+    background: var(--cor-primaria-destaque);
+    transform: translateY(-2px);
+}
+
+.barra-filtros {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    overflow-x: auto;
+    padding: 2px 0;
+}
+
+.filtro {
+    border: 1px solid var(--cor-borda);
+    background: transparent;
+    color: var(--cor-texto);
+    border-radius: 999px;
+    padding: 7px 13px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filtro:hover,
+.filtro.ativo {
+    background: var(--cor-primaria);
+    color: #fff;
+    border-color: var(--cor-primaria);
+}
+
+.lista-tarefas {
+    list-style: none;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.item-tarefa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--fundo-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    animation: aparecer 0.3s ease;
+}
+
+.item-tarefa span {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    padding-right: 10px;
+}
+
+.item-tarefa.concluido span {
+    text-decoration: line-through;
+    color: var(--cor-concluido);
+}
+
+.acoes-tarefa {
+    display: flex;
+    gap: 8px;
+}
+
+.botao-acao {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--cor-texto);
+}
+
+.botao-acao:hover {
+    background: rgba(128, 128, 128, 0.12);
+}
+
+.botao-acao.editar:hover {
+    color: var(--cor-primaria-destaque);
+}
+
+.botao-acao.excluir:hover {
+    color: var(--cor-perigo);
+}
+
+.estado-vazio {
+    text-align: center;
+    padding: 24px 12px;
+    color: var(--cor-concluido);
+    font-size: 0.9rem;
+}
+
+.rodape-aplicacao {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--cor-concluido);
+    text-align: center;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 481px) {
+    .perfil {
+        padding: 0 16px;
+    }
+
+    .corpo-aplicacao {
+        margin: 16px 12px 16px;
+        padding: 12px;
+    }
+}

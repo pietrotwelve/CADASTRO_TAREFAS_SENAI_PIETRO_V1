@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel de Tarefas - SENAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="cartao-aplicacao">
+
+        <header class="cabecalho-aplicacao">
+
+            <div class="banner">
+                <button id="botao-alternar-tema" class="botao-icone" title="Alternar tema">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="perfil">
+
+                <div class="avatar">
+                    <img
+                        src="foto-perfil.jpg"
+                        alt="Minha foto de perfil"
+                        class="foto-perfil"
+                    >
+
+                    <span
+                        class="status-online"
+                        title="Online"
+                    ></span>
+                </div>
+
+                <div class="identidade">
+                    <h1>Minhas Tarefas ✨</h1>
+                    <span class="subtitulo">
+                        Painel de tarefas • SENAI
+                    </span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="corpo-aplicacao">
+
+            <div class="caixa-entrada">
+
+                <input
+                    type="text"
+                    id="campo-tarefa"
+                    placeholder="O que vamos fazer hoje?..."
+                    maxlength="40"
+                >
+
+                <button
+                    id="botao-adicionar"
+                    class="botao-principal"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    Adicionar
+                </button>
+
+            </div>
+
+
+            <div
+                class="barra-filtros"
+                aria-label="Filtrar tarefas"
+            >
+
+                <button
+                    class="filtro ativo"
+                    data-filtro="todas"
+                >
+                    Todas
+                </button>
+
+                <button
+                    class="filtro"
+                    data-filtro="pendentes"
+                >
+                    Pendentes
+                </button>
+
+                <button
+                    class="filtro"
+                    data-filtro="concluidas"
+                >
+                    Concluídas
+                </button>
+
+            </div>
+
+
+            <!-- Lista de tarefas -->
+            <ul
+                id="lista-tarefas"
+                class="lista-tarefas"
+            >
+                <!-- As tarefas serão adicionadas pelo JavaScript -->
+            </ul>
+            <footer class="rodape-aplicacao">
+
+                <span id="contador-tarefas">
+                    0 tarefas na lista
+                </span>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
