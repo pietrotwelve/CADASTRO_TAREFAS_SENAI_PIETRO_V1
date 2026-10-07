@@ -276,5 +276,4 @@ botaoAlternarTema.addEventListener(
         );
     }
 );
-
 renderizarTarefas();

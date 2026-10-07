@@ -8,7 +8,6 @@
     --cor-perigo: #ff7675;
     --cor-concluido: #a0aec0;
 }
-
 body.modo-escuro {
     --gradiente-fundo: linear-gradient(135deg, #4a4a4a 0%, #000000 100%);
     --fundo-cartao: #121212;
@@ -17,7 +16,6 @@ body.modo-escuro {
     --cor-primaria: #c0392b;
     --cor-primaria-destaque: #e74c3c;
 }
-
 body::before {
     content: "";
     position: fixed;
