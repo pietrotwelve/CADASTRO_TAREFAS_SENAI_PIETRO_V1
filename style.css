@@ -324,3 +324,49 @@ input[type="text"]:focus {
         padding: 12px;
     }
 }
+
+.item-tarefa {
+    gap: 8px;
+}
+
+.alca {
+    color: var(--cor-concluido);
+    cursor: grab;
+    font-size: 0.85rem;
+}
+
+.item-tarefa.arrastando {
+    opacity: 0.4;
+}
+
+.item-tarefa.alvo {
+    border-color: var(--cor-primaria);
+    border-style: dashed;
+}
+
+.badge-prioridade {
+    border: none;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.badge-prioridade.baixa {
+    background: #23a55a;
+}
+
+.badge-prioridade.media {
+    background: #e1a100;
+}
+
+.badge-prioridade.alta {
+    background: var(--cor-perigo);
+}
+
+.item-tarefa.concluido .badge-prioridade {
+    opacity: 0.45;
+}

@@ -19,6 +19,10 @@ if (modoEscuroSalvo) {
 }
 
 let filtroAtual = 'todas';
+let tarefaArrastada = null;
+
+const PRIORIDADES = ['baixa', 'media', 'alta'];
+const ROTULOS = { baixa: 'Baixa', media: 'Média', alta: 'Alta' };
 
 function salvarTarefas() {
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
@@ -175,8 +179,81 @@ function renderizarTarefas() {
             botaoExcluir
         );
 
+        const alca = document.createElement('i');
+
+        alca.className = 'fa-solid fa-grip-vertical alca';
+
+        const prioridade = tarefa.prioridade || 'media';
+
+        const botaoPrioridade = document.createElement('button');
+
+        botaoPrioridade.className = `badge-prioridade ${prioridade}`;
+
+        botaoPrioridade.textContent = ROTULOS[prioridade];
+
+        botaoPrioridade.title = 'Clique para alterar a prioridade';
+
+        botaoPrioridade.addEventListener('click', () => {
+            const proxima =
+                PRIORIDADES[(PRIORIDADES.indexOf(prioridade) + 1) % PRIORIDADES.length];
+
+            tarefa.prioridade = proxima;
+
+            salvarTarefas();
+
+            renderizarTarefas();
+        });
+
+        itemLista.draggable = true;
+
+        itemLista.addEventListener('dragstart', evento => {
+            tarefaArrastada = tarefa;
+
+            evento.dataTransfer.effectAllowed = 'move';
+
+            itemLista.classList.add('arrastando');
+        });
+
+        itemLista.addEventListener('dragend', () => {
+            tarefaArrastada = null;
+
+            itemLista.classList.remove('arrastando');
+        });
+
+        itemLista.addEventListener('dragover', evento => {
+            evento.preventDefault();
+
+            itemLista.classList.add('alvo');
+        });
+
+        itemLista.addEventListener('dragleave', () => {
+            itemLista.classList.remove('alvo');
+        });
+
+        itemLista.addEventListener('drop', evento => {
+            evento.preventDefault();
+
+            itemLista.classList.remove('alvo');
+
+            if (!tarefaArrastada || tarefaArrastada === tarefa) {
+                return;
+            }
+
+            const destino = tarefas.indexOf(tarefa);
+            const origem = tarefas.indexOf(tarefaArrastada);
+
+            tarefas.splice(origem, 1);
+            tarefas.splice(destino, 0, tarefaArrastada);
+
+            salvarTarefas();
+
+            renderizarTarefas();
+        });
+
         itemLista.append(
+            alca,
             texto,
+            botaoPrioridade,
             acoes
         );
 
@@ -199,7 +276,8 @@ function adicionarTarefa() {
 
     tarefas.push({
         texto: textoTarefa.slice(0, 40),
-        concluida: false
+        concluida: false,
+        prioridade: 'media'
     });
 
     salvarTarefas();
